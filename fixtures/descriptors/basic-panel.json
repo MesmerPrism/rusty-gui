@@ -1,0 +1,21 @@
+{
+  "schema": "rusty.gui.panel_descriptor.v1",
+  "panel_id": "panel.example.controls",
+  "title": "Example Controls",
+  "layout": {
+    "kind": "stack",
+    "gap": 8
+  },
+  "widgets": [
+    {
+      "widget_id": "widget.mesh_replay.enabled",
+      "kind": "toggle",
+      "label": "Mesh Replay",
+      "binding": {
+        "command_id": "rusty.manifold.command.setting.propose",
+        "setting_id": "makepad.mesh_replay.enabled"
+      }
+    }
+  ]
+}
+
