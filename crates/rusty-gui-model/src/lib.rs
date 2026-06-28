@@ -1,6 +1,19 @@
 //! Portable GUI descriptor contracts for Rusty Morphospace.
 
+pub mod companion;
+
 use serde::{Deserialize, Serialize};
+
+pub use companion::{
+    ActionPolicy, CommandRequestBinding, CompanionModuleDescriptor, CompanionModuleFamily,
+    CompanionTransportCapabilityDescriptor, CompanionTransportFamily, CompanionTransportPlane,
+    CompanionWorkspaceDescriptor, DeliverySemantics, DeviceStateRequirement,
+    EvidenceArtifactBinding, ExternalReportBinding, FrontendKind, ModuleAuthorityRole,
+    ModuleOwnerLane, PayloadRateClass, RemediationAction, SensitivityTag, ToolRequirement,
+    TransportRequirement, WorkspaceModuleSelection, COMPANION_MODULE_DESCRIPTOR_SCHEMA,
+    COMPANION_MODULE_FAMILIES, COMPANION_TRANSPORT_CAPABILITY_SCHEMA,
+    COMPANION_WORKSPACE_DESCRIPTOR_SCHEMA,
+};
 
 /// A renderer-neutral panel descriptor.
 #[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]

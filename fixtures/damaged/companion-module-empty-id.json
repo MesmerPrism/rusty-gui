@@ -1,0 +1,26 @@
+{
+  "schema": "rusty.gui.companion.module_descriptor.v1",
+  "module_id": "",
+  "title": "Broken Module",
+  "family": "readiness_preconditions",
+  "owner_lane": "hostess",
+  "authority_role": "inspector",
+  "supported_frontends": [
+    "wpf"
+  ],
+  "required_tools": [],
+  "required_device_states": [],
+  "required_transports": [],
+  "readable_reports": [],
+  "command_requests": [],
+  "evidence_artifacts": [],
+  "remediation_actions": [],
+  "action_policy": {
+    "auto_run_checks": true,
+    "state_changes_require_confirmation": true,
+    "destructive_actions_allowed": false
+  },
+  "sensitivity": [
+    "public_safe"
+  ]
+}

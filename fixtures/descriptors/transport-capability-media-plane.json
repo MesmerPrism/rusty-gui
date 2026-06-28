@@ -1,0 +1,43 @@
+{
+  "schema": "rusty.gui.companion.transport_capability.v1",
+  "transport_id": "transport.media_h264_data_plane",
+  "title": "Media Data Plane",
+  "family": "media_data_plane",
+  "plane": "media",
+  "delivery": "frame_session",
+  "payload_rate": "high_rate_binary",
+  "authority_role": "inspector",
+  "route_ids": [
+    "bridge_route.media.h264.data_plane"
+  ],
+  "required_evidence_stages": [
+    "sent",
+    "transport_ok",
+    "observed"
+  ],
+  "supported_frontends": [
+    "wpf",
+    "makepad",
+    "cli"
+  ],
+  "strengths": [
+    "keeps frame payloads out of command JSON",
+    "can expose counters, drops, and decode readiness"
+  ],
+  "costs": [
+    "needs independent session lifecycle and counters",
+    "not suitable for low-rate command receipts"
+  ],
+  "suitable_for": [
+    "remote camera frames",
+    "video stream diagnostics",
+    "decode readiness panels"
+  ],
+  "not_suitable_for": [
+    "settings transport",
+    "applied command proof"
+  ],
+  "sensitivity": [
+    "public_safe"
+  ]
+}

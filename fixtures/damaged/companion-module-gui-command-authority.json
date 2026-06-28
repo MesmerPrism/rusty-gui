@@ -1,0 +1,34 @@
+{
+  "schema": "rusty.gui.companion.module_descriptor.v1",
+  "module_id": "companion.broken.gui_command",
+  "title": "Broken GUI Command Authority",
+  "family": "manifold_command_feedback",
+  "owner_lane": "gui",
+  "authority_role": "requester",
+  "supported_frontends": [
+    "wpf"
+  ],
+  "required_tools": [],
+  "required_device_states": [],
+  "required_transports": [],
+  "readable_reports": [],
+  "command_requests": [
+    {
+      "id": "command.bad.local",
+      "command_id": "rusty.gui.command.bad_local_mutation",
+      "route_id": "route.bad.local",
+      "authority_lane": "gui",
+      "safe_to_auto_run": false
+    }
+  ],
+  "evidence_artifacts": [],
+  "remediation_actions": [],
+  "action_policy": {
+    "auto_run_checks": false,
+    "state_changes_require_confirmation": true,
+    "destructive_actions_allowed": false
+  },
+  "sensitivity": [
+    "public_safe"
+  ]
+}

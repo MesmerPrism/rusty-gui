@@ -1,0 +1,52 @@
+{
+  "schema": "rusty.gui.companion.module_descriptor.v1",
+  "module_id": "companion.stream.telemetry_state",
+  "title": "Telemetry Streams",
+  "family": "stream_telemetry_state",
+  "owner_lane": "manifold",
+  "authority_role": "inspector",
+  "supported_frontends": [
+    "wpf",
+    "makepad",
+    "cli"
+  ],
+  "required_tools": [],
+  "required_device_states": [],
+  "required_transports": [
+    {
+      "id": "transport.lsl_markers",
+      "family": "lsl",
+      "required": false
+    },
+    {
+      "id": "transport.udp_osc",
+      "family": "udp_osc",
+      "required": false
+    }
+  ],
+  "readable_reports": [
+    {
+      "id": "report.manifold.stream_freshness",
+      "schema": "rusty.manifold.stream.freshness_report.v1",
+      "owner_lane": "manifold"
+    }
+  ],
+  "command_requests": [],
+  "evidence_artifacts": [
+    {
+      "id": "evidence.stream_freshness",
+      "schema": "rusty.manifold.stream.freshness_report.v1",
+      "owner_lane": "manifold",
+      "redaction_required": false
+    }
+  ],
+  "remediation_actions": [],
+  "action_policy": {
+    "auto_run_checks": true,
+    "state_changes_require_confirmation": true,
+    "destructive_actions_allowed": false
+  },
+  "sensitivity": [
+    "public_safe"
+  ]
+}

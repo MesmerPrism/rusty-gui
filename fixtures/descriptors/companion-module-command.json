@@ -1,0 +1,78 @@
+{
+  "schema": "rusty.gui.companion.module_descriptor.v1",
+  "module_id": "companion.command.bridge_probe",
+  "title": "Bridge Command Probe",
+  "family": "manifold_command_feedback",
+  "owner_lane": "manifold",
+  "authority_role": "requester",
+  "supported_frontends": [
+    "wpf",
+    "cli"
+  ],
+  "required_tools": [],
+  "required_device_states": [
+    {
+      "id": "device.runtime_receipt_supported",
+      "label": "Runtime receipt supported",
+      "required": true
+    }
+  ],
+  "required_transports": [
+    {
+      "id": "transport.websocket_broker",
+      "family": "websocket",
+      "required": true
+    },
+    {
+      "id": "transport.app_private_staging",
+      "family": "app_private_file_staging",
+      "required": true
+    }
+  ],
+  "readable_reports": [
+    {
+      "id": "report.manifold.bridge_route",
+      "schema": "rusty.manifold.bridge.route_evidence.v1",
+      "owner_lane": "manifold"
+    }
+  ],
+  "command_requests": [
+    {
+      "id": "command.bridge_probe.set_marker",
+      "command_id": "rusty.manifold.command.bridge_probe.set_marker",
+      "route_id": "bridge_route.command.websocket.applied",
+      "authority_lane": "manifold",
+      "safe_to_auto_run": false
+    },
+    {
+      "id": "command.bridge_probe.android_authorized.set_marker",
+      "command_id": "hostess.makepad.bridge_probe.set_marker",
+      "route_id": "bridge_route.command.android_broker_authorized_app_private.applied",
+      "authority_lane": "manifold",
+      "safe_to_auto_run": false
+    }
+  ],
+  "evidence_artifacts": [
+    {
+      "id": "evidence.bridge_route",
+      "schema": "rusty.manifold.bridge.route_evidence.v1",
+      "owner_lane": "manifold",
+      "redaction_required": false
+    },
+    {
+      "id": "evidence.hostess.execution",
+      "schema": "rusty.hostess.bridge_command.execution.v1",
+      "owner_lane": "hostess",
+      "redaction_required": false
+    }
+  ],
+  "remediation_actions": [],
+  "action_policy": {
+    "auto_run_checks": true,
+    "state_changes_require_confirmation": true,
+    "destructive_actions_allowed": false
+  },
+  "sensitivity": [
+    "public_safe"
+  ]
+}

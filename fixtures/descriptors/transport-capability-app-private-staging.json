@@ -1,0 +1,45 @@
+{
+  "schema": "rusty.gui.companion.transport_capability.v1",
+  "transport_id": "transport.app_private_staging",
+  "title": "App-Private Staging",
+  "family": "app_private_file_staging",
+  "plane": "control",
+  "delivery": "app_private_file",
+  "payload_rate": "file_artifact",
+  "authority_role": "adapter",
+  "route_ids": [
+    "bridge_route.command.android_app_private.applied",
+    "bridge_route.command.android_broker_authorized_app_private.applied"
+  ],
+  "required_evidence_stages": [
+    "sent",
+    "transport_ok",
+    "runtime_accepted",
+    "applied"
+  ],
+  "supported_frontends": [
+    "wpf",
+    "cli"
+  ],
+  "strengths": [
+    "deterministic bring-up route",
+    "can be composed after broker authority review",
+    "runtime receipt can be pulled from app-private storage"
+  ],
+  "costs": [
+    "raw app-private staging does not prove broker authority acceptance",
+    "requires package run-as support"
+  ],
+  "suitable_for": [
+    "safe runtime probes",
+    "offline command receipt tests"
+  ],
+  "not_suitable_for": [
+    "authoritative broker command acceptance",
+    "high-rate data streams"
+  ],
+  "sensitivity": [
+    "public_safe",
+    "device_specific"
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "schema": "rusty.gui.companion.transport_capability.v1",
+  "transport_id": "transport.manifold_websocket",
+  "title": "Manifold WebSocket",
+  "family": "websocket",
+  "plane": "control",
+  "delivery": "ordered_reliable",
+  "payload_rate": "low_rate_json",
+  "authority_role": "requester",
+  "route_ids": [
+    "bridge_route.command.websocket.applied",
+    "bridge_route.command.android_broker_authorized_app_private.applied"
+  ],
+  "required_evidence_stages": [
+    "sent",
+    "transport_ok",
+    "authority_accepted",
+    "runtime_accepted",
+    "applied"
+  ],
+  "supported_frontends": [
+    "wpf",
+    "makepad",
+    "cli"
+  ],
+  "strengths": [
+    "bidirectional low-rate command receipts",
+    "fits broker authority and rejection evidence"
+  ],
+  "costs": [
+    "requires broker availability",
+    "not intended for frame payloads"
+  ],
+  "suitable_for": [
+    "command requests",
+    "broker authority review before Android runtime delivery",
+    "session control",
+    "receipt timelines"
+  ],
+  "not_suitable_for": [
+    "camera frames",
+    "bulk artifacts"
+  ],
+  "sensitivity": [
+    "public_safe"
+  ]
+}

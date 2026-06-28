@@ -1,0 +1,30 @@
+{
+  "schema": "rusty.gui.companion.workspace_descriptor.v1",
+  "workspace_id": "workspace.hostess_makepad.validation",
+  "title": "Hostess Makepad Validation",
+  "supported_frontends": [
+    "wpf",
+    "makepad",
+    "cli"
+  ],
+  "modules": [
+    {
+      "module_id": "companion.readiness.preconditions",
+      "required": true,
+      "prominent": true
+    },
+    {
+      "module_id": "companion.command.bridge_probe",
+      "required": true,
+      "prominent": true
+    },
+    {
+      "module_id": "companion.evidence.bridge_route",
+      "required": true,
+      "prominent": false
+    }
+  ],
+  "sensitivity": [
+    "public_safe"
+  ]
+}

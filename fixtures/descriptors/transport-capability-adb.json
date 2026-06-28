@@ -1,0 +1,43 @@
+{
+  "schema": "rusty.gui.companion.transport_capability.v1",
+  "transport_id": "transport.adb_usb",
+  "title": "ADB USB",
+  "family": "adb",
+  "plane": "setup",
+  "delivery": "ordered_reliable",
+  "payload_rate": "file_artifact",
+  "authority_role": "adapter",
+  "route_ids": [
+    "bridge_route.device.adb.transport_only"
+  ],
+  "required_evidence_stages": [
+    "sent",
+    "transport_ok"
+  ],
+  "supported_frontends": [
+    "wpf",
+    "cli"
+  ],
+  "strengths": [
+    "install, launch, file staging, and log capture",
+    "serial-scoped and easy to validate"
+  ],
+  "costs": [
+    "transport success does not prove runtime behavior",
+    "depends on USB authorization or an explicit serial endpoint"
+  ],
+  "suitable_for": [
+    "setup",
+    "device discovery",
+    "app-private staging",
+    "artifact pull"
+  ],
+  "not_suitable_for": [
+    "runtime acceptance proof by itself",
+    "high-rate frame streaming"
+  ],
+  "sensitivity": [
+    "public_safe",
+    "device_specific"
+  ]
+}

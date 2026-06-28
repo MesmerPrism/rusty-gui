@@ -1,0 +1,40 @@
+{
+  "schema": "rusty.gui.companion.transport_capability.v1",
+  "transport_id": "transport.lsl_markers",
+  "title": "LSL Markers",
+  "family": "lsl",
+  "plane": "telemetry",
+  "delivery": "timestamped_stream",
+  "payload_rate": "low_rate_marker",
+  "authority_role": "inspector",
+  "route_ids": [
+    "bridge_route.marker.lsl.timestamped"
+  ],
+  "required_evidence_stages": [
+    "sent",
+    "observed"
+  ],
+  "supported_frontends": [
+    "wpf",
+    "cli"
+  ],
+  "strengths": [
+    "timestamped study markers",
+    "good stream-alignment vocabulary"
+  ],
+  "costs": [
+    "discovery can be environment-sensitive",
+    "not a general command authority"
+  ],
+  "suitable_for": [
+    "study timing markers",
+    "biosignal stream alignment"
+  ],
+  "not_suitable_for": [
+    "runtime settings mutation",
+    "media frames"
+  ],
+  "sensitivity": [
+    "public_safe"
+  ]
+}

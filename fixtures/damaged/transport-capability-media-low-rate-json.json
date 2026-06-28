@@ -1,0 +1,27 @@
+{
+  "schema": "rusty.gui.companion.transport_capability.v1",
+  "transport_id": "transport.broken_media_json",
+  "title": "Broken Media JSON",
+  "family": "media_data_plane",
+  "plane": "media",
+  "delivery": "frame_session",
+  "payload_rate": "low_rate_json",
+  "authority_role": "inspector",
+  "route_ids": [
+    "bridge_route.media.h264.data_plane"
+  ],
+  "required_evidence_stages": [
+    "sent",
+    "transport_ok"
+  ],
+  "supported_frontends": [
+    "wpf"
+  ],
+  "strengths": [],
+  "costs": [],
+  "suitable_for": [],
+  "not_suitable_for": [],
+  "sensitivity": [
+    "public_safe"
+  ]
+}

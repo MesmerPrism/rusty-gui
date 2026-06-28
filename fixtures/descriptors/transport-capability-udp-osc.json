@@ -1,0 +1,39 @@
+{
+  "schema": "rusty.gui.companion.transport_capability.v1",
+  "transport_id": "transport.udp_osc",
+  "title": "UDP/OSC",
+  "family": "udp_osc",
+  "plane": "telemetry",
+  "delivery": "best_effort",
+  "payload_rate": "low_rate_marker",
+  "authority_role": "inspector",
+  "route_ids": [
+    "bridge_route.telemetry.udp.best_effort"
+  ],
+  "required_evidence_stages": [
+    "sent"
+  ],
+  "supported_frontends": [
+    "wpf",
+    "cli"
+  ],
+  "strengths": [
+    "low overhead",
+    "simple telemetry and control observations"
+  ],
+  "costs": [
+    "best-effort delivery",
+    "needs freshness and sequence policy"
+  ],
+  "suitable_for": [
+    "telemetry status",
+    "soft real-time markers"
+  ],
+  "not_suitable_for": [
+    "authoritative applied-command proof",
+    "large artifacts"
+  ],
+  "sensitivity": [
+    "public_safe"
+  ]
+}

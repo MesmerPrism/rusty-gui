@@ -1,0 +1,41 @@
+{
+  "schema": "rusty.gui.companion.module_descriptor.v1",
+  "module_id": "companion.study.workspace_adapter",
+  "title": "Study Workspace Adapter",
+  "family": "operator_study_shell_adapter",
+  "owner_lane": "studio",
+  "authority_role": "adapter",
+  "supported_frontends": [
+    "wpf",
+    "cli"
+  ],
+  "required_tools": [],
+  "required_device_states": [],
+  "required_transports": [],
+  "readable_reports": [
+    {
+      "id": "report.study.workspace_descriptor",
+      "schema": "rusty.hostess.study.workspace_descriptor.v1",
+      "owner_lane": "hostess"
+    }
+  ],
+  "command_requests": [],
+  "evidence_artifacts": [
+    {
+      "id": "evidence.study.session_manifest",
+      "schema": "rusty.hostess.study.session_manifest.v1",
+      "owner_lane": "hostess",
+      "redaction_required": true
+    }
+  ],
+  "remediation_actions": [],
+  "action_policy": {
+    "auto_run_checks": false,
+    "state_changes_require_confirmation": true,
+    "destructive_actions_allowed": false
+  },
+  "sensitivity": [
+    "private_study",
+    "evidence"
+  ]
+}

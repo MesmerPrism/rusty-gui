@@ -1,0 +1,26 @@
+{
+  "schema": "rusty.gui.companion.module_descriptor.v1",
+  "module_id": "companion.broken.authority",
+  "title": "Broken Authority Claim",
+  "family": "runtime_effective_state",
+  "owner_lane": "gui",
+  "authority_role": "authority",
+  "supported_frontends": [
+    "wpf"
+  ],
+  "required_tools": [],
+  "required_device_states": [],
+  "required_transports": [],
+  "readable_reports": [],
+  "command_requests": [],
+  "evidence_artifacts": [],
+  "remediation_actions": [],
+  "action_policy": {
+    "auto_run_checks": false,
+    "state_changes_require_confirmation": true,
+    "destructive_actions_allowed": false
+  },
+  "sensitivity": [
+    "public_safe"
+  ]
+}
