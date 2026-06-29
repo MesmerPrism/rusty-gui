@@ -7,6 +7,7 @@
   "authority_role": "requester",
   "supported_frontends": [
     "wpf",
+    "makepad",
     "cli"
   ],
   "required_tools": [],
@@ -19,7 +20,7 @@
   ],
   "required_transports": [
     {
-      "id": "transport.websocket_broker",
+      "id": "transport.manifold_websocket",
       "family": "websocket",
       "required": true
     },

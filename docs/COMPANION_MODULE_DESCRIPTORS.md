@@ -50,6 +50,17 @@ second route still names Manifold as command authority: Hostess may stage the
 app-private runtime request only after broker acceptance, and the Quest runtime
 must still emit applied evidence.
 
+The Hostess Makepad validation workspace is intentionally shared by WPF,
+Makepad, and CLI. Every module selected by that workspace, and every transport
+required by those modules, must advertise the same frontend support before the
+workspace can claim Makepad parity. This lets a Makepad panel render readiness,
+command receipt, and compact evidence status from the same Hostess/Manifold
+reports without becoming command, setup, or runtime authority.
+The same closure rule applies at the module level: any module that advertises a
+frontend must only require transport descriptors that advertise that frontend.
+Otherwise frontend-filtered catalog reports can include modules while omitting
+their required transport evidence.
+
 ## Current Fixtures
 
 Valid module/workspace fixtures:

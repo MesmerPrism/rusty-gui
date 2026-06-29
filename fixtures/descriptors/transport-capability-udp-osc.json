@@ -15,6 +15,7 @@
   ],
   "supported_frontends": [
     "wpf",
+    "makepad",
     "cli"
   ],
   "strengths": [

@@ -620,6 +620,8 @@ fn require_external_schema(field: &str, value: &str) -> Result<(), String> {
 
 #[cfg(test)]
 mod tests {
+    use std::collections::BTreeMap;
+
     use super::{
         CompanionModuleDescriptor, CompanionModuleFamily, CompanionTransportCapabilityDescriptor,
         CompanionWorkspaceDescriptor, COMPANION_MODULE_FAMILIES,
@@ -665,6 +667,67 @@ mod tests {
                 "companion.evidence.bridge_route",
             ])
             .expect("valid companion workspace descriptor");
+    }
+
+    #[test]
+    fn workspace_frontends_are_supported_by_selected_modules_and_transports() {
+        let workspace: CompanionWorkspaceDescriptor = serde_json::from_str(include_str!(
+            "../../../fixtures/descriptors/companion-workspace-hostess-makepad-validation.json"
+        ))
+        .expect("valid JSON");
+        let modules = module_fixture_map();
+        let transports = transport_fixture_map();
+
+        for frontend in &workspace.supported_frontends {
+            for selection in &workspace.modules {
+                let module = modules
+                    .get(&selection.module_id)
+                    .expect("workspace fixture references known module");
+                assert!(
+                    module.supported_frontends.contains(frontend),
+                    "workspace {} supports {:?}, but selected module {} does not",
+                    workspace.workspace_id,
+                    frontend,
+                    module.module_id
+                );
+                for transport in &module.required_transports {
+                    let descriptor = transports
+                        .get(&transport.id)
+                        .expect("module fixture references known transport");
+                    assert!(
+                        descriptor.supported_frontends.contains(frontend),
+                        "workspace {} supports {:?}, but required transport {} for module {} does not",
+                        workspace.workspace_id,
+                        frontend,
+                        descriptor.transport_id,
+                        module.module_id
+                    );
+                }
+            }
+        }
+    }
+
+    #[test]
+    fn module_frontends_are_supported_by_required_transports() {
+        let modules = module_fixture_map();
+        let transports = transport_fixture_map();
+
+        for module in modules.values() {
+            for transport in &module.required_transports {
+                let descriptor = transports
+                    .get(&transport.id)
+                    .expect("module fixture references known transport");
+                for frontend in &module.supported_frontends {
+                    assert!(
+                        descriptor.supported_frontends.contains(frontend),
+                        "module {} supports {:?}, but required transport {} does not",
+                        module.module_id,
+                        frontend,
+                        descriptor.transport_id
+                    );
+                }
+            }
+        }
     }
 
     #[test]
@@ -763,5 +826,42 @@ mod tests {
             }
             _ => unreachable!("fixture path is listed by the test"),
         }
+    }
+
+    fn module_fixture_map() -> BTreeMap<String, CompanionModuleDescriptor> {
+        [
+            "../../../fixtures/descriptors/companion-module-readiness.json",
+            "../../../fixtures/descriptors/companion-module-command.json",
+            "../../../fixtures/descriptors/companion-module-stream.json",
+            "../../../fixtures/descriptors/companion-module-evidence.json",
+            "../../../fixtures/descriptors/companion-module-study-workspace-adapter.json",
+        ]
+        .into_iter()
+        .map(|fixture| {
+            let descriptor: CompanionModuleDescriptor =
+                serde_json::from_str(include_str_fixture(fixture)).expect("valid JSON");
+            (descriptor.module_id.clone(), descriptor)
+        })
+        .collect()
+    }
+
+    fn transport_fixture_map() -> BTreeMap<String, CompanionTransportCapabilityDescriptor> {
+        [
+            include_str!("../../../fixtures/descriptors/transport-capability-adb.json"),
+            include_str!("../../../fixtures/descriptors/transport-capability-websocket.json"),
+            include_str!("../../../fixtures/descriptors/transport-capability-udp-osc.json"),
+            include_str!("../../../fixtures/descriptors/transport-capability-lsl.json"),
+            include_str!(
+                "../../../fixtures/descriptors/transport-capability-app-private-staging.json"
+            ),
+            include_str!("../../../fixtures/descriptors/transport-capability-media-plane.json"),
+        ]
+        .into_iter()
+        .map(|fixture| {
+            let descriptor: CompanionTransportCapabilityDescriptor =
+                serde_json::from_str(fixture).expect("valid JSON");
+            (descriptor.transport_id.clone(), descriptor)
+        })
+        .collect()
     }
 }
